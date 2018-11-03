@@ -2,14 +2,13 @@ console.log('Starting index.js');
 
 const fs = require('fs');
 const os = require('os');
+const _ = require('lodash');  //3rd party module
 const notes = require('./notes.js');
 
-let res = notes.addNote();
-console.log(res);
+console.log(_.isString(true)); //false
+console.log(_.isString('Lauren'));  //true
 
-let sum = notes.add(2, 2);
-console.log(sum); //4
-// let user = os.userInfo();
+let filteredArray = _.uniq(['lauren', 1, 'lauren']);
+console.log(filteredArray);  //['lauren', 1]
 
-// fs.appendFileSync('greetings.txt', `Hello ${user.username}! You are ${notes.age}.`);
 
