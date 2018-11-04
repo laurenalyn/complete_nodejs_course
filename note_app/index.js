@@ -19,6 +19,7 @@ let command = process.argv[2];
 console.log('Command: ', command);
 // console.log(process.argv);
 
+// Checks if the command passed is equal to the following: 
 if (command === 'add') {
     console.log('Adding new note');
 } else if (command === 'list') {
