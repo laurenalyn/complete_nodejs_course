@@ -18,11 +18,19 @@ const notes = require('./notes.js');
 const argv = yargs.argv;
 let command = argv._[0];
 console.log('Command: ', command);
-console.log('yargs', argv);
+// console.log('yargs', argv);
 
 // Checks if the command passed is equal to the following: 
 if (command === 'add') {
-    notes.addNote(argv.title, argv.body);
+    let note = notes.addNote(argv.title, argv.body);
+    if (note) {
+        console.log('note created');
+        console.log('--',);
+        console.log(`Title: ${note.title}`);
+        console.log(`Body: ${note.body}`);
+    } else {
+        console.log('note title already taken select a new title');
+    }
 } else if (command === 'list') {
     notes.getAll();
 } else if (command === 'read') {
