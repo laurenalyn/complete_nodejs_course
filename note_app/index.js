@@ -21,18 +21,17 @@ const argv = yargs.argv;
 // process.argv is part of the Node environment, not a 3rd party module
 let command = process.argv[2];
 console.log('Command: ', command);
-console.log('process',process.argv);
 console.log('yargs', argv);
 
 // Checks if the command passed is equal to the following: 
 if (command === 'add') {
-    console.log('Adding new note');
+    notes.addNote(argv.title, argv.body);
 } else if (command === 'list') {
-    console.log('Listing all notes');
+    notes.getAll();
 } else if (command === 'read') {
-    console.log('Note being read');
+    notes.getNote(argv.title);
 } else if (command === 'remove') {
-    console.log('Removing note');
+    notes.removeNote(argv.title);
 } else {
-    console.log('Command not recgonized')
+    console.log('Command not recgonized');
 }
