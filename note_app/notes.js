@@ -58,7 +58,13 @@ let getNote = (title) => {
 };
 
 let removeNote = (title) => {
-    console.log('Removing Note', title);
+    let notes = fetchNotes();
+    // filters notes and removes the note with the title that we passed
+    let filteredNotes = notes.filter((note) => note.title !== title);
+    // saves the file - minus the note removed
+    saveNotes(filteredNotes);
+
+    return notes.length !== filteredNotes.length;
 };
 
 
