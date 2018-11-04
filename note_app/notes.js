@@ -11,7 +11,7 @@ let addNote = (title, body) => {
         title,
         body
     };
-    
+
     // We add the try catch for error handeling. If the file does not exsist yet then it will move on to the line where we push the note
     // into our notes object. The next step would be to run fs.writeFileSync which creates the notes-data.json file and we pass the notes
     // object to the file and it gets converted to json prior to being written to the file. 
@@ -26,8 +26,20 @@ let addNote = (title, body) => {
 
     }
 
-    notes.push(note);
-    fs.writeFileSync('notes-data.json', JSON.stringify(notes));
+    // will store an array with all notes that already exist inside of the notes array that have the title of the note that is trying to be created
+    // let duplicateNotes = notes.filter((note) => {
+    //     return note.title === title;
+    // });
+
+    // short hand for (above) arrow syntax body since we are only returning one line of code to execure
+    let duplicateNotes = notes.filter((note) => note.title === title);
+    
+    // if the length of our duplicateNotes === 0 meaning we have not yet duplicated the title name then we want to go ahead and execute our if statements - 
+    // otherwise if we have duplicated the title name then the data will not be pushed
+    if (duplicateNotes.length === 0) {
+        notes.push(note);
+        fs.writeFileSync('notes-data.json', JSON.stringify(notes));
+    } 
 };
 
 let getAll = () => {
@@ -50,3 +62,4 @@ module.exports = {
     getNote,
     removeNote
 };
+
