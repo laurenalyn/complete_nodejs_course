@@ -1,5 +1,5 @@
 // starts notes.js
-console.log(`Starting notes.js`);
+// console.log(`Starting notes.js`);
 // imports node module
 const fs = require('fs');
 
@@ -50,7 +50,7 @@ let addNote = (title, body) => {
 };
 
 let getAll = () => {
-    console.log('Listing all notes');
+    return fetchNotes();
 };
 
 let getNote = (title) => {
