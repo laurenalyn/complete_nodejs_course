@@ -70,6 +70,9 @@ let removeNote = (title) => {
 
 
 
+
+
+
 let logNote = (note) => {
     console.log('--');
     console.log(`Title: ${note.title}`);
