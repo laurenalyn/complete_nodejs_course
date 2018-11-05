@@ -25,22 +25,29 @@ if (command === 'add') {
     let note = notes.addNote(argv.title, argv.body);
     if (note) {
         console.log('note created');
-        console.log('--',);
-        console.log(`Title: ${note.title}`);
-        console.log(`Body: ${note.body}`);
+        notes.logNote(note);
     } else {
-        console.log('note title already taken select a new title');
+        console.log('error: note title already taken select a new title');
     }
 } else if (command === 'list') {
     notes.getAll();
+
 } else if (command === 'read') {
-    notes.getNote(argv.title);
+    let note = notes.getNote(argv.title);
+    if (note) {
+        console.log('note found');
+        notes.logNote(note);
+    } else {
+        console.log('error: note was not found');
+    }
+    
 } else if (command === 'remove') {
     let noteRemoved = notes.removeNote(argv.title); // this will be either true or false
     // if the title was removed (true) we print truthy statement (note was removed) if false we print
     //falsey(note not found) 
     let message = noteRemoved ? 'Note was removed' : 'Note not found';
     console.log(message);
+
 } else {
     console.log('Command not recgonized');
 }
