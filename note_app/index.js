@@ -1,11 +1,11 @@
-console.log('Starting index.js');
+// console.log('Starting index.js');
 //built in modules
 const fs = require('fs');
 const os = require('os');
 //3rd party module
 const _ = require('lodash');
 const yargs = require('yargs');
- //local module
+//  //local module
 const notes = require('./notes.js');
 // console.log(_.isString(true)); //false
 // console.log(_.isString('Lauren'));  //true
@@ -30,8 +30,9 @@ if (command === 'add') {
         console.log('error: note title already taken select a new title');
     }
 } else if (command === 'list') {
-    notes.getAll();
-
+    let allNotes = notes.getAll();
+    console.log(`Printing ${allNotes.length} note(s)`);
+    allNotes.forEach((note) => notes.logNote(note));
 } else if (command === 'read') {
     let note = notes.getNote(argv.title);
     if (note) {
