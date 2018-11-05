@@ -14,10 +14,34 @@ const notes = require('./notes.js');
 // let filteredArray = _.uniq(['Mike']);
 // console.log(filteredArray); 
 
+const titleOptions = {
+    describe: '',
+    demand: true,
+    alias: 't'
+}
+const bodyOptions = {
+    describe: '',
+    demand: true,
+    alias: 'b'
+};
+
 // Uses yargs npm to parse passed values
-const argv = yargs.argv;
+const argv = yargs
+.command('add', 'Add a new note', {
+    title: titleOptions,
+    body: bodyOptions,
+})
+.command('list', 'List all notes')
+.command('read', 'Read a note', {
+    title: titleOptions
+})
+.command('remove', 'Remove a note', {
+    title: titleOptions,
+})
+.help()
+.argv;
 let command = argv._[0];
-console.log('Command: ', command);
+// console.log('Command: ', command);
 // console.log('yargs', argv);
 
 // Checks if the command passed is equal to the following: 
@@ -33,6 +57,7 @@ if (command === 'add') {
     let allNotes = notes.getAll();
     console.log(`Printing ${allNotes.length} note(s)`);
     allNotes.forEach((note) => notes.logNote(note));
+
 } else if (command === 'read') {
     let note = notes.getNote(argv.title);
     if (note) {
