@@ -50,11 +50,13 @@ let addNote = (title, body) => {
 };
 
 let getAll = () => {
-    console.log('Getting all notes');
+    console.log('Listing all notes');
 };
 
 let getNote = (title) => {
-    console.log('Getting Note', title);
+    let notes = fetchNotes();
+    let filteredNotes = notes.filter((note) => note.title === title);
+    return filteredNotes[0];  // the only value in the array will be the title we passed if the title matches
 };
 
 let removeNote = (title) => {
@@ -63,16 +65,23 @@ let removeNote = (title) => {
     let filteredNotes = notes.filter((note) => note.title !== title);
     // saves the file - minus the note removed
     saveNotes(filteredNotes);
-
     return notes.length !== filteredNotes.length;
 };
 
+
+
+let logNote = (note) => {
+    console.log('--');
+    console.log(`Title: ${note.title}`);
+    console.log(`Body: ${note.body}`);
+};
 
 module.exports = {
     // short hand in ES6 is to just write addNote instead of    addNote: addNote    since the key&value are the same
     addNote,
     getAll, 
     getNote,
-    removeNote
+    removeNote,
+    logNote
 };
 
