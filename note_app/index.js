@@ -24,7 +24,6 @@ const bodyOptions = {
     demand: true,
     alias: 'b'
 };
-
 // Uses yargs npm to parse passed values
 const argv = yargs
 .command('add', 'Add a new note', {
