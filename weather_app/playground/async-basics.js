@@ -9,5 +9,3 @@ setTimeout( () => {
 }, 0); 
 
 console.log('finishing app'); // we see this second
-
-
