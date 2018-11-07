@@ -5,7 +5,7 @@ setTimeout( () => {
 }, 2000);
 
 setTimeout( () => {
-    console.log('second callback'); // we see this second - it was stil in "timeout"
+    console.log('second callback'); // we see this third - it was stil in "timeout"
 }, 0); 
 
 console.log('finishing app'); // we see this second
